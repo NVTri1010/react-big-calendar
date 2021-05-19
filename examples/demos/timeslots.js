@@ -5,11 +5,11 @@ import events from '../events'
 let Timeslots = ({ localizer }) => (
   <Calendar
     events={events}
-    step={15}
-    timeslots={8}
+    step={60}
+    timeslots={1}
     localizer={localizer}
     defaultView={Views.WEEK}
-    defaultDate={new Date(2015, 3, 12)}
+    defaultDate={new Date(2021, 4, 19)}
   />
 )
 

@@ -18,7 +18,6 @@ class TimeGridHeader extends React.Component {
   renderHeaderCells(range) {
     let {
       localizer,
-      getDrilldownView,
       getNow,
       getters: { dayProp },
       components: { header: HeaderComponent = Header },
@@ -27,7 +26,6 @@ class TimeGridHeader extends React.Component {
     const today = getNow()
 
     return range.map((date, i) => {
-      let drilldownView = getDrilldownView(date)
       let label = localizer.format(date, 'dayFormat')
 
       const { className, style } = dayProp(date)
@@ -46,16 +44,7 @@ class TimeGridHeader extends React.Component {
             dates.eq(date, today, 'day') && 'rbc-today'
           )}
         >
-          {drilldownView ? (
-            <a
-              href="#"
-              onClick={e => this.handleHeaderClick(date, drilldownView, e)}
-            >
-              {header}
-            </a>
-          ) : (
-            <span>{header}</span>
-          )}
+          <span>{header}</span>
         </div>
       )
     })
@@ -111,28 +100,19 @@ class TimeGridHeader extends React.Component {
       rtl,
       resources,
       range,
-      events,
-      getNow,
       accessors,
-      selectable,
-      components,
-      getters,
       scrollRef,
-      localizer,
       isOverflowing,
       components: {
         timeGutterHeader: TimeGutterHeader,
         resourceHeader: ResourceHeaderComponent = ResourceHeader,
       },
-      resizable,
     } = this.props
 
     let style = {}
     if (isOverflowing) {
       style[rtl ? 'marginLeft' : 'marginRight'] = `${scrollbarSize()}px`
     }
-
-    const groupedEvents = resources.groupEvents(events)
 
     return (
       <div
@@ -167,7 +147,7 @@ class TimeGridHeader extends React.Component {
             >
               {this.renderHeaderCells(range)}
             </div>
-            <DateContentRow
+            {/* <DateContentRow
               isAllDay
               rtl={rtl}
               getNow={getNow}
@@ -188,7 +168,7 @@ class TimeGridHeader extends React.Component {
               onSelectSlot={this.props.onSelectSlot}
               longPressThreshold={this.props.longPressThreshold}
               resizable={resizable}
-            />
+            /> */}
           </div>
         ))}
       </div>

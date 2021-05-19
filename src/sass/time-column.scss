@@ -5,11 +5,28 @@
   flex-direction: column;
   min-height: 100%;
 
+  & > .rbc-timeslot-group:first-child {
+    .rbc-label {
+      display: none;
+    }
+  }
+
   .rbc-timeslot-group {
     flex: 1;
+    min-height: 55px;
+  }
+
+  .rbc-time-slot {
+    width: 70px;
+
+    & > span {
+      position: relative;
+      font-size: 1rem;
+      top: -1.125rem;
+      background: white;
+    }
   }
 }
-
 
 .rbc-timeslot-group {
   border-bottom: 1px solid $cell-border;
@@ -54,7 +71,7 @@
     overflow: hidden;
     position: absolute;
   }
-  
+
   .rbc-background-event {
     @extend .rbc-event;
     opacity: 0.75;
@@ -110,10 +127,10 @@
   }
 
   .rbc-header,
-  .rbc-day-bg, {
+  .rbc-day-bg {
     width: 140px;
     // min-width: 0;
-    flex:  1 1 0;
+    flex: 1 1 0;
     flex-basis: 0 px;
   }
 }

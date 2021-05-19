@@ -1,41 +1,34 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import clsx from 'clsx'
+
 import { navigate } from './utils/constants'
+import BackIcon from './assets/BackIcon'
+import NextIcon from './assets/NextIcon'
 
 class Toolbar extends React.Component {
   render() {
-    let {
-      localizer: { messages },
-      label,
-    } = this.props
+    let { label } = this.props
 
     return (
       <div className="rbc-toolbar">
-        <span className="rbc-btn-group">
-          <button
-            type="button"
-            onClick={this.navigate.bind(null, navigate.TODAY)}
-          >
-            {messages.today}
-          </button>
-          <button
-            type="button"
-            onClick={this.navigate.bind(null, navigate.PREVIOUS)}
-          >
-            {messages.previous}
-          </button>
-          <button
-            type="button"
-            onClick={this.navigate.bind(null, navigate.NEXT)}
-          >
-            {messages.next}
-          </button>
-        </span>
+        <button
+          type="button"
+          onClick={this.navigate.bind(null, navigate.PREVIOUS)}
+          className="rbc-toolbar-btn"
+        >
+          <BackIcon />
+        </button>
 
         <span className="rbc-toolbar-label">{label}</span>
 
-        <span className="rbc-btn-group">{this.viewNamesGroup(messages)}</span>
+        <button
+          type="button"
+          className="rbc-toolbar-btn"
+          onClick={this.navigate.bind(null, navigate.NEXT)}
+        >
+          <NextIcon />
+        </button>
       </div>
     )
   }
